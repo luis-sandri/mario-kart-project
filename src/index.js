@@ -1,3 +1,6 @@
+import chalk from "chalk";
+import logSymbols from "log-symbols";
+
 const personagens = {
     Mario: {
         nome: "Mario",
@@ -93,9 +96,9 @@ async function playRaceEngine(character1, character2) {
                 console.log(`${character2.nome} venceu o confronto! ${character1.nome} perdeu 1 ponto`)
                 character1.pontos--;
             } else {
-            console.log(powerResult2 === powerResult1 ? "Confronto empatado! Nenhum ponto perdido" : "")
+                console.log(powerResult2 === powerResult1 ? "Confronto empatado! Nenhum ponto perdido" : "")
             }
-        };
+        }
         // verificando vencedor
         if (totalTestSkill1 > totalTestSkill2) {
             console.log(`${character1.nome} marcou um ponto`);
@@ -103,7 +106,7 @@ async function playRaceEngine(character1, character2) {
         } else if (totalTestSkill2 > totalTestSkill1) {
             console.log(`${character2.nome} marcou um ponto`);
             character2.pontos++;
-        } else if (totalTestSkill1 = totalTestSkill2) {
+        } else if (totalTestSkill1 === totalTestSkill2) {
             if (character1.attribute > character2.attribute) {
                 console.log(`${character1.nome} marcou um ponto`)
                 character1.pontos++;
@@ -122,11 +125,11 @@ async function declareWinner(character1, character2) {
     console.log(`${character2.nome}: ${character2.pontos} ponto(s)`)
 
     if(character1.pontos > character2.pontos) {
-        console.log(`\n ${character1.nome} venceu a corrida! Parabéns!`);
+        console.log(logSymbols.success, chalk.green(character1.nome + " venceu a corrida! Parabéns!"));
     }else if(character2.pontos > character1.pontos) {
-        console.log(`\n ${character2.nome} venceu a corrida! Parabéns`);
+        console.log(logSymbols.success, chalk.green(character2.nome + " venceu a corrida! Parabéns!"));
     }else {
-        console.log(`\n Empate!`);
+        console.log(logSymbols.info, chalk.yellow("Empate!"));
     }
 }
 
